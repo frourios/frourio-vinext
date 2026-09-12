@@ -1,4 +1,4 @@
-export const PACKAGE_NAME = '@frourio/next';
+export const PACKAGE_NAME = '@frourio/vinext';
 
 export const FROURIO_FILE = 'frourio.ts';
 

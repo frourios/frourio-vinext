@@ -1,6 +1,6 @@
 # client-usage
 
-Skill for using the frourio-next auto-generated type-safe client (`fc` / `$fc`) in frontend code, including integration with SWR and TanStack Query.
+Skill for using the frourio-vinext auto-generated type-safe client (`fc` / `$fc`) in frontend code, including integration with SWR and TanStack Query.
 
 ## Usage
 
@@ -10,7 +10,7 @@ Skill for using the frourio-next auto-generated type-safe client (`fc` / `$fc`) 
 
 ## Overview
 
-frourio-next generates a type-safe client in `frourio.client.ts`. There are two client variants:
+frourio-vinext generates a type-safe client in `frourio.client.ts`. There are two client variants:
 
 | Client  | Import                                   | Behavior                                                                                                         |
 | ------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
@@ -20,7 +20,7 @@ frourio-next generates a type-safe client in `frourio.client.ts`. There are two 
 Both accept the same options:
 
 ```typescript
-import type { FrourioClientOption } from '@frourio/next';
+import type { FrourioClientOption } from '@frourio/vinext';
 
 const client = $fc({
   baseURL: 'http://localhost:3000', // API base URL

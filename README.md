@@ -1,14 +1,14 @@
-# FrourioNext
+# FrourioVinext
 
 <br />
 <img src="https://frourios.github.io/frourio/assets/images/ogp.png" width="1280" alt="frourio" />
 
 <div align="center">
-  <a href="https://www.npmjs.com/package/@frourio/next">
-    <img src="https://img.shields.io/npm/v/@frourio/next" alt="npm version" />
+  <a href="https://www.npmjs.com/package/@frourio/vinext">
+    <img src="https://img.shields.io/npm/v/@frourio/vinext" alt="npm version" />
   </a>
-  <a href="https://www.npmjs.com/package/@frourio/next">
-    <img src="https://img.shields.io/npm/dm/@frourio/next" alt="npm download" />
+  <a href="https://www.npmjs.com/package/@frourio/vinext">
+    <img src="https://img.shields.io/npm/dm/@frourio/vinext" alt="npm download" />
   </a>
 </div>
 <br />
@@ -16,7 +16,7 @@
 <br />
 <br />
 
-FrourioNext streamlines API development in Next.js App Router by providing:
+FrourioVinext streamlines API development in Next.js App Router by providing:
 
 - **End-to-End Type Safety**: Define your API shape once using Zod schemas in `frourio.ts` and get type safety across your server handlers and client calls.
 - **Runtime Validation**: Automatically validate incoming request parameters, query strings, headers, and bodies against your Zod schemas within Route Handlers.
@@ -37,7 +37,7 @@ FrourioNext streamlines API development in Next.js App Router by providing:
 ## Quick start
 
 ```bash
-npx skills add frourios/frourio-next
+npx skills add frourios/frourio-vinext
 ```
 
 ## Installation
@@ -45,42 +45,42 @@ npx skills add frourios/frourio-next
 ```bash
 # Using npm
 npm install next zod
-npm install @frourio/next npm-run-all2 --save-dev
+npm install @frourio/vinext npm-run-all2 --save-dev
 
 # Using yarn
 yarn add next zod
-yarn add @frourio/next npm-run-all2 --dev
+yarn add @frourio/vinext npm-run-all2 --dev
 
 # Using pnpm
 pnpm add next zod
-pnpm add @frourio/next npm-run-all2 --save-dev
+pnpm add @frourio/vinext npm-run-all2 --save-dev
 ```
 
 ## Setup
 
-Add the FrourioNext CLI commands to the `scripts` section of your `package.json`:
+Add the FrourioVinext CLI commands to the `scripts` section of your `package.json`:
 
 ```json
 {
   "scripts": {
     "dev": "run-p dev:*",
     "dev:next": "next dev",
-    "dev:frourio": "frourio-next --watch", // Watches frourio.ts files and generates .server.ts and .client.ts
-    "build": "frourio-next && next build", // Generates files before building
+    "dev:frourio": "frourio-vinext --watch", // Watches frourio.ts files and generates .server.ts and .client.ts
+    "build": "frourio-vinext && next build", // Generates files before building
     // Optional: Add OpenAPI generation
-    "dev:openapi": "frourio-next-openapi --output=./public/openapi.json --watch",
-    "build:openapi": "frourio-next-openapi --output=./public/openapi.json"
+    "dev:openapi": "frourio-vinext-openapi --output=./public/openapi.json --watch",
+    "build:openapi": "frourio-vinext-openapi --output=./public/openapi.json"
   }
 }
 ```
 
-- `frourio-next`: The core command that generates `*.server.ts` (server-side helpers) and `*.client.ts` (type-safe client).
-- `frourio-next-openapi`: (Optional) Generates an OpenAPI 3.1 JSON file based on your `frourio.ts` definitions.
-- `frourio-next-msw`: (Optional) Generates MSW (Mock Service Worker) request handlers from your `frourio.ts` definitions.
+- `frourio-vinext`: The core command that generates `*.server.ts` (server-side helpers) and `*.client.ts` (type-safe client).
+- `frourio-vinext-openapi`: (Optional) Generates an OpenAPI 3.1 JSON file based on your `frourio.ts` definitions.
+- `frourio-vinext-msw`: (Optional) Generates MSW (Mock Service Worker) request handlers from your `frourio.ts` definitions.
 
 ## Core Concepts & Usage
 
-FrourioNext revolves around defining your API structure in `frourio.ts` files and using the auto-generated helpers.
+FrourioVinext revolves around defining your API structure in `frourio.ts` files and using the auto-generated helpers.
 
 ### 1. Define API Specification (`frourio.ts`)
 
@@ -89,7 +89,7 @@ In each API route directory (e.g., `app/api/users/[userId]/`), create a `frourio
 `app/api/tasks/[taskId]/frourio.ts`:
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 // Define reusable schemas if needed
@@ -152,7 +152,7 @@ yarn dev
 pnpm dev
 ```
 
-Running `dev` starts both the Next.js server and the `frourio-next --watch` process. FrourioNext will automatically detect changes in `frourio.ts` files and generate/update:
+Running `dev` starts both the Next.js server and the `frourio-vinext --watch` process. FrourioVinext will automatically detect changes in `frourio.ts` files and generate/update:
 
 - `app/api/tasks/[taskId]/frourio.server.ts`: Contains the `createRoute` helper function tailored for this specific route.
 - `app/api/tasks/[taskId]/frourio.client.ts`: Contains the type-safe client functions (`fc`, `$fc`) for this route and its children.
@@ -230,7 +230,7 @@ export const { GET, PATCH, DELETE } = createRoute({
 
 ### 4. Initialize and Use the Type-Safe Client
 
-FrourioNext generates `frourio.client.ts` files only for endpoints that define HTTP methods (GET, POST, etc.), which export client functions (`fc` and `$fc`). It's best practice to initialize a central client instance. Endpoints that only define middleware will not have client code generated.
+FrourioVinext generates `frourio.client.ts` files only for endpoints that define HTTP methods (GET, POST, etc.), which export client functions (`fc` and `$fc`). It's best practice to initialize a central client instance. Endpoints that only define middleware will not have client code generated.
 
 `lib/apiClient.ts` (Client Initialization):
 
@@ -466,7 +466,7 @@ Define middleware in `frourio.ts` to execute code before your main route handler
 `app/api/frourio.ts` (Root middleware - e.g., for authentication):
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 // Define the context this middleware provides
@@ -487,7 +487,7 @@ export type AuthContext = z.infer<typeof AuthContextSchema>;
 `app/api/admin/frourio.ts` (Nested middleware - inherits AuthContext, adds AdminContext):
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 // Define additional context specific to /admin routes
@@ -532,7 +532,7 @@ export const middleware = createMiddleware(async ({ req, next }) => {
 `app/api/admin/route.middleware.ts` (Nested middleware implementation):
 
 ```typescript
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'vinext/shims/server';
 import { createMiddleware } from './frourio.middleware';
 
 export const middleware = createMiddleware(async ({ req, next }, parentContext) => {
@@ -600,7 +600,7 @@ Use `format: 'formData'` and `z.instanceof(File)` in `frourio.ts`.
 `app/api/upload/frourio.ts`:
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 export const frourioSpec = {
@@ -684,7 +684,7 @@ Use `format: 'urlencoded'` for `application/x-www-form-urlencoded` requests. Thi
 `app/api/contact/frourio.ts`:
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 export const frourioSpec = {
@@ -752,7 +752,7 @@ If you omit the `res` property in `frourio.ts` for a specific method, `createRou
 `app/api/chat/frourio.ts`:
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 export const frourioSpec = {
@@ -930,11 +930,11 @@ See `tests/useQuery.spec.tsx` for more detailed examples.
 
 ## MSW Handlers Generation
 
-FrourioNext can automatically generate MSW (Mock Service Worker) request handlers based on your `frourio.ts` definitions. This is particularly useful for mocking API calls in tests or during frontend development without a running backend.
+FrourioVinext can automatically generate MSW (Mock Service Worker) request handlers based on your `frourio.ts` definitions. This is particularly useful for mocking API calls in tests or during frontend development without a running backend.
 
 ### Setup & Usage
 
-1. Add the `frourio-next-msw` script to `package.json` (see [Setup](#️-setup)).
+1. Add the `frourio-vinext-msw` script to `package.json` (see [Setup](#️-setup)).
 2. Run the command:
    ```bash
    npm run generate:msw
@@ -947,13 +947,13 @@ FrourioNext can automatically generate MSW (Mock Service Worker) request handler
      "scripts": {
        "dev": "run-p dev:*",
        "dev:next": "next dev",
-       "dev:frourio": "frourio-next --watch",
-       "generate": "frourio-next",
-       "generate:msw": "frourio-next-msw --output=./src/mocks/handlers.ts",
-       "dev:msw": "frourio-next-msw --output=./src/mocks/handlers.ts --watch",
-       "build": "frourio-next && next build",
-       "build:openapi": "frourio-next-openapi --output=./public/openapi.json",
-       "dev:openapi": "frourio-next-openapi --output=./public/openapi.json --watch"
+       "dev:frourio": "frourio-vinext --watch",
+       "generate": "frourio-vinext",
+       "generate:msw": "frourio-vinext-msw --output=./src/mocks/handlers.ts",
+       "dev:msw": "frourio-vinext-msw --output=./src/mocks/handlers.ts --watch",
+       "build": "frourio-vinext && next build",
+       "build:openapi": "frourio-vinext-openapi --output=./public/openapi.json",
+       "dev:openapi": "frourio-vinext-openapi --output=./public/openapi.json --watch"
      }
    }
    ```
@@ -978,7 +978,7 @@ export const server = setupServer(...handlers);
 // afterAll(() => server.close());
 ```
 
-### CLI Options (`frourio-next-msw`)
+### CLI Options (`frourio-vinext-msw`)
 
 | Option     | Alias | Type     | Description                                                                        |
 | :--------- | :---- | :------- | :--------------------------------------------------------------------------------- |
@@ -1005,17 +1005,17 @@ patchFilePrototype();
 
 ## Testing
 
-Test your FrourioNext handlers like standard Next.js Route Handlers, typically by mocking `NextRequest` and calling the exported handler functions directly. Use libraries like `msw` to mock the `fetch` calls when testing client-side logic or components using the generated Frourio clients (`fc`, `$fc`).
+Test your FrourioVinext handlers like standard Next.js Route Handlers, typically by mocking `NextRequest` and calling the exported handler functions directly. Use libraries like `msw` to mock the `fetch` calls when testing client-side logic or components using the generated Frourio clients (`fc`, `$fc`).
 
 See `tests/client.spec.ts`, `tests/useSWR.spec.tsx`, and `tests/useQuery.spec.tsx` for detailed examples using `msw` and `vitest`.
 
 ## OpenAPI 3.1 Generation
 
-Generate OpenAPI documentation from your `frourio.ts` files using the `frourio-next-openapi` command.
+Generate OpenAPI documentation from your `frourio.ts` files using the `frourio-vinext-openapi` command.
 
 ### Setup & Usage
 
-1.  Add the `frourio-next-openapi` script to `package.json` (see [Setup](#️-setup)).
+1.  Add the `frourio-vinext-openapi` script to `package.json` (see [Setup](#️-setup)).
 2.  Run the command:
     ```bash
     npm run build:openapi
@@ -1026,13 +1026,13 @@ Generate OpenAPI documentation from your `frourio.ts` files using the `frourio-n
 
 ### Template File
 
-Settings outside of FrourioNext's responsibility (e.g., `info`, `servers`, `security`, `tags`) are managed via a template file (`openapi_template.json` by default, located alongside `--output`).
+Settings outside of FrourioVinext's responsibility (e.g., `info`, `servers`, `security`, `tags`) are managed via a template file (`openapi_template.json` by default, located alongside `--output`).
 
-- If the template file does not exist, FrourioNext auto-generates a minimal skeleton (`openapi`, `info`, and `servers` if `basePath` is configured) on first run. Commit this file and edit it freely — your changes are preserved across regenerations.
-- FrourioNext reads the template as the base document and overwrites only `paths` and `components`. Everything else in the template is passed through to the generated `openapi.json` as-is.
+- If the template file does not exist, FrourioVinext auto-generates a minimal skeleton (`openapi`, `info`, and `servers` if `basePath` is configured) on first run. Commit this file and edit it freely — your changes are preserved across regenerations.
+- FrourioVinext reads the template as the base document and overwrites only `paths` and `components`. Everything else in the template is passed through to the generated `openapi.json` as-is.
 - Use `--template` / `-t` to point at a different template path.
 
-### CLI Options (`frourio-next-openapi`)
+### CLI Options (`frourio-vinext-openapi`)
 
 | Option       | Alias | Type     | Description                                                                                              |
 | :----------- | :---- | :------- | :------------------------------------------------------------------------------------------------------- |
@@ -1043,7 +1043,7 @@ Settings outside of FrourioNext's responsibility (e.g., `info`, `servers`, `secu
 
 _(Based on `src/openapi/cli.ts`)_
 
-## CLI Options (`frourio-next`)
+## CLI Options (`frourio-vinext`)
 
 | Option    | Alias | Type | Description                                                              |
 | :-------- | :---- | :--- | :----------------------------------------------------------------------- |
@@ -1053,4 +1053,4 @@ _(Based on `src/cli.ts`)_
 
 ## License
 
-FrourioNext is licensed under the [MIT License](https://github.com/frouriojs/frourio-next/blob/main/LICENSE).
+FrourioVinext is licensed under the [MIT License](https://github.com/frouriojs/frourio-vinext/blob/main/LICENSE).

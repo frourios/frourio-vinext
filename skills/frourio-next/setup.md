@@ -1,6 +1,6 @@
 # setup
 
-Skill to integrate frourio-next into an existing Next.js project.
+Skill to integrate frourio-vinext into an existing Next.js project.
 
 ## Usage
 
@@ -14,7 +14,7 @@ Skill to integrate frourio-next into an existing Next.js project.
 
 ```bash
 npm install zod
-npm install -D @frourio/next
+npm install -D @frourio/vinext
 ```
 
 ### 2. Configure package.json scripts
@@ -22,10 +22,10 @@ npm install -D @frourio/next
 ```json
 {
   "scripts": {
-    "dev": "run-p dev:*",
-    "dev:next": "next dev",
-    "dev:frourio": "frourio-next --watch",
-    "build": "frourio-next && next build"
+    "dev": "vinext typegen && run-p dev:*",
+    "dev:next": "vinext dev",
+    "dev:frourio": "frourio-vinext --watch",
+    "build": "vinext typegen && frourio-vinext && vinext build"
   }
 }
 ```
@@ -41,7 +41,7 @@ npm install -D npm-run-all2
 ```json
 {
   "scripts": {
-    "dev:openapi": "frourio-next-openapi --output=./public/openapi.json --watch"
+    "dev:openapi": "frourio-vinext-openapi --output=./public/openapi.json --watch"
   }
 }
 ```
@@ -57,7 +57,7 @@ Add to `package.json`:
 ```json
 {
   "scripts": {
-    "dev:msw": "frourio-next-msw --output=./tests/setupMswHandlers.ts --watch"
+    "dev:msw": "frourio-vinext-msw --output=./tests/setupMswHandlers.ts --watch"
   }
 }
 ```
@@ -74,7 +74,7 @@ app/api/hello/frourio.ts   ← Define API spec
 ### 6. Run code generation
 
 ```bash
-npx frourio-next
+npx frourio-vinext
 ```
 
 The following files are auto-generated:
@@ -128,22 +128,22 @@ fc({
 npm run dev
 ```
 
-`frourio-next --watch` watches for file changes and automatically regenerates whenever `frourio.ts` is modified.
+`frourio-vinext --watch` watches for file changes and automatically regenerates whenever `frourio.ts` is modified.
 
 ## CLI commands
 
-| Command                                | Description                                                                     |
-| -------------------------------------- | ------------------------------------------------------------------------------- |
-| `frourio-next`                         | Generate server/client code                                                     |
-| `frourio-next --watch`                 | Generate in watch mode                                                          |
-| `frourio-next-openapi --output=PATH`   | Generate OpenAPI 3.1 spec                                                       |
-| `frourio-next-openapi --template=PATH` | Use a custom OpenAPI template (default: `openapi_template.json` next to output) |
-| `frourio-next-openapi --watch`         | Generate OpenAPI in watch mode                                                  |
-| `frourio-next-msw --output=PATH`       | Generate MSW handlers                                                           |
+| Command                                  | Description                                                                     |
+| ---------------------------------------- | ------------------------------------------------------------------------------- |
+| `frourio-vinext`                         | Generate server/client code                                                     |
+| `frourio-vinext --watch`                 | Generate in watch mode                                                          |
+| `frourio-vinext-openapi --output=PATH`   | Generate OpenAPI 3.1 spec                                                       |
+| `frourio-vinext-openapi --template=PATH` | Use a custom OpenAPI template (default: `openapi_template.json` next to output) |
+| `frourio-vinext-openapi --watch`         | Generate OpenAPI in watch mode                                                  |
+| `frourio-vinext-msw --output=PATH`       | Generate MSW handlers                                                           |
 
 ### OpenAPI template file
 
-`frourio-next-openapi` reads a template file as the base document and overwrites only `paths` and `components`. Settings outside FrourioNext's responsibility (`info`, `servers`, `security`, `tags`, etc.) are preserved across regenerations.
+`frourio-vinext-openapi` reads a template file as the base document and overwrites only `paths` and `components`. Settings outside FrourioVinext's responsibility (`info`, `servers`, `security`, `tags`, etc.) are preserved across regenerations.
 
 - Default path: `openapi_template.json` next to `--output`.
 - If the template doesn't exist, a minimal skeleton is auto-generated on first run. Commit it and edit freely.
@@ -178,7 +178,7 @@ app/
 Auto-generated files should be gitignored:
 
 ```gitignore
-# frourio-next generated files
+# frourio-vinext generated files
 **/frourio.server.ts
 **/frourio.client.ts
 **/frourio.middleware.ts

@@ -1,6 +1,6 @@
 # add-endpoint
 
-Skill to add a frourio-next API endpoint at a user-specified Next.js App Router path.
+Skill to add a frourio-vinext API endpoint at a user-specified Next.js App Router path.
 
 ## Usage
 
@@ -30,7 +30,7 @@ If the path or methods are not specified, use AskUserQuestion to confirm:
 Follow the pattern below to create `frourio.ts`.
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 export const frourioSpec = {
@@ -138,7 +138,7 @@ res: {
 ### 3. Run code generation
 
 ```bash
-npx frourio-next
+npx frourio-vinext
 ```
 
 This auto-generates the following files:

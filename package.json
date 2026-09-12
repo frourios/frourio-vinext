@@ -1,14 +1,15 @@
 {
-  "name": "@frourio/next",
+  "name": "@frourio/vinext",
   "version": "0.0.0",
-  "description": "Next.js Route Handlers helper with runtime validation and type-safe clients",
+  "type": "module",
+  "description": "Vinext Route Handlers helper with runtime validation and type-safe clients",
   "author": "Solufa",
   "license": "MIT",
   "main": "dist/index.js",
   "bin": {
-    "frourio-next": "bin/index.js",
-    "frourio-next-msw": "bin/msw.js",
-    "frourio-next-openapi": "bin/openapi.js"
+    "frourio-vinext": "bin/index.js",
+    "frourio-vinext-msw": "bin/msw.js",
+    "frourio-vinext-openapi": "bin/openapi.js"
   },
   "scripts": {
     "dev": "npm run build && npm run generate",
@@ -19,17 +20,17 @@
     "test": "vitest run --coverage",
     "typecheck": "tsc --noEmit"
   },
-  "homepage": "https://github.com/frouriojs/frourio-next#readme",
+  "homepage": "https://github.com/frouriojs/frourio-vinext#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/frourios/frourio-next"
+    "url": "https://github.com/frourios/frourio-vinext"
   },
   "files": [
     "dist"
   ],
   "keywords": [
     "typescript",
-    "nextjs",
+    "vinext",
     "frourio"
   ],
   "dependencies": {
@@ -40,7 +41,7 @@
   },
   "devDependencies": {
     "@ai-sdk/openai": "^3.0.41",
-    "@frourio/next": "file:.",
+    "@frourio/vinext": "file:.",
     "@tanstack/react-query": "^5.90.21",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -54,11 +55,11 @@
     "cookie": "^1.1.1",
     "happy-dom": "^20.8.4",
     "msw": "^2.12.13",
-    "next": "^15.5.12",
     "oxfmt": "^0.36.0",
     "oxlint": "^1.51.0",
     "swr": "^2.4.1",
     "typescript": "^6.0.2",
+    "vinext": "1.0.0-beta.9",
     "vitest": "^4.1.2",
     "zod": "^4.3.6"
   }

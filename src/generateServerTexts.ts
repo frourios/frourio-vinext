@@ -1,8 +1,8 @@
 import path from 'path';
-import { MIDDLEWARE_FILE, MIDDLEWARE_SERVER_FILE, PARAMS_FILE, SERVER_FILE } from './constants';
-import type { DirSpec, MethodInfo, MiddlewareDict } from './generate';
-import type { ParamsInfo } from './paramsUtil';
-import { paramsToText, pathToParams } from './paramsUtil';
+import { MIDDLEWARE_FILE, MIDDLEWARE_SERVER_FILE, PARAMS_FILE, SERVER_FILE } from './constants.js';
+import type { DirSpec, MethodInfo, MiddlewareDict } from './generate.js';
+import type { ParamsInfo } from './paramsUtil.js';
+import { paramsToText, pathToParams } from './paramsUtil.js';
 
 export const generateServerTexts = (
   specs: DirSpec[],
@@ -104,7 +104,7 @@ const generateMiddlewareServer = (
     (paramsFromAncestor && params.middleNames.length > 0)
   );
   const imports: string[] = [
-    "import { type NextRequest, NextResponse } from 'next/server'",
+    "import { type NextRequest, NextResponse } from 'vinext/shims/server'",
     (params || middleware.current?.hasCtx || middleware.ancestorCtx) &&
       "import type { z } from 'zod'",
     hasLocalParamsFile &&
@@ -231,7 +231,7 @@ const generateServer = (
     (paramsFromAncestor && params.middleNames.length > 0)
   );
   const imports: string[] = [
-    "import { type NextRequest, NextResponse } from 'next/server'",
+    "import { type NextRequest, NextResponse } from 'vinext/shims/server'",
     "import type { z } from 'zod'",
     hasLocalParamsFile &&
       !middleware.current &&

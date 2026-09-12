@@ -1,6 +1,6 @@
 # testing
 
-Skill for writing tests for frourio-next API routes using MSW (Mock Service Worker) and Vitest.
+Skill for writing tests for frourio-vinext API routes using MSW (Mock Service Worker) and Vitest.
 
 ## Usage
 
@@ -15,7 +15,7 @@ Examples:
 
 ## Overview
 
-frourio-next auto-generates `setupMswHandlers.ts` which imports all `route.ts` files and creates MSW handlers that call the **actual route implementations**. Tests use the type-safe client (`$fc`/`fc`) against these handlers, making them integration tests that exercise real server logic without a running Next.js server.
+frourio-vinext auto-generates `setupMswHandlers.ts` which imports all `route.ts` files and creates MSW handlers that call the **actual route implementations**. Tests use the type-safe client (`$fc`/`fc`) against these handlers, making them integration tests that exercise real server logic without a running Next.js server.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ npm install -D vitest msw happy-dom @testing-library/react @testing-library/dom
 ### Generate MSW handlers
 
 ```bash
-npx frourio-next-msw --output=./tests/setupMswHandlers.ts
+npx frourio-vinext-msw --output=./tests/setupMswHandlers.ts
 ```
 
 For watch mode, add to `package.json`:
@@ -36,7 +36,7 @@ For watch mode, add to `package.json`:
 ```json
 {
   "scripts": {
-    "dev:msw": "frourio-next-msw --output=./tests/setupMswHandlers.ts --watch"
+    "dev:msw": "frourio-vinext-msw --output=./tests/setupMswHandlers.ts --watch"
   }
 }
 ```

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'vinext/shims/server';
 import { createMiddleware } from './frourio.middleware';
 
 export const middleware = createMiddleware(async ({ req, next }, parentContext) => {

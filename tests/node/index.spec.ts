@@ -3,7 +3,7 @@ import { execSync } from 'child_process';
 import fs, { existsSync } from 'fs';
 import { unlink } from 'fs/promises';
 import path from 'path';
-import { NextRequest } from 'next/server';
+import { NextRequest } from 'vinext/shims/server';
 import { expect, test } from 'vitest';
 import type { z } from 'zod';
 import type {

@@ -1,6 +1,6 @@
 # add-middleware
 
-Skill to add frourio-next middleware. Apply cross-cutting concerns such as authentication, authorization, and logging to route hierarchies.
+Skill to add frourio-vinext middleware. Apply cross-cutting concerns such as authentication, authorization, and logging to route hierarchies.
 
 ## Usage
 
@@ -36,7 +36,7 @@ Child routes automatically pass through ancestor middleware.
 When passing data to child routes (e.g., auth info):
 
 ```typescript
-import type { FrourioSpec } from '@frourio/next';
+import type { FrourioSpec } from '@frourio/vinext';
 import { z } from 'zod';
 
 export const AuthContextSchema = z.object({
@@ -66,7 +66,7 @@ export const frourioSpec = {
 ### 2. Run code generation
 
 ```bash
-npx frourio-next
+npx frourio-vinext
 ```
 
 `frourio.middleware.ts` is auto-generated, exporting the `createMiddleware` function.
@@ -93,7 +93,7 @@ export const middleware = createMiddleware(async ({ req, next }) => {
 #### Child middleware (receives parent context)
 
 ```typescript
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'vinext/shims/server';
 import { createMiddleware } from './frourio.middleware';
 
 // Parent middleware context is passed as the second argument
@@ -159,7 +159,7 @@ The `createMiddleware` callback receives the following:
 Return a `NextResponse` directly without calling `next()` to abort the request:
 
 ```typescript
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'vinext/shims/server';
 
 export const middleware = createMiddleware(async ({ req, next }) => {
   if (!req.headers.get('Authorization')) {

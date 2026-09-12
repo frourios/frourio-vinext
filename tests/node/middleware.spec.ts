@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { NextRequest } from 'next/server';
+import { NextRequest } from 'vinext/shims/server';
 import { describe, expect, test, vi } from 'vitest';
 import * as adminMwRoute from '../../projects/basic/app/api/mw/admin/route';
 import * as usersMwRoute from '../../projects/basic/app/api/mw/admin/users/route';
