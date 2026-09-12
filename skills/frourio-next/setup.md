@@ -1,6 +1,6 @@
 # setup
 
-Skill to integrate frourio-vinext into an existing Next.js project.
+Skill to integrate frourio-vinext into an existing Vinext project.
 
 ## Usage
 
@@ -187,7 +187,7 @@ Auto-generated files should be gitignored:
 
 ## Notes
 
-- Next.js App Router (`app/` directory) is required
+- Vinext App Router (`app/` directory) is required
 - TypeScript + Zod are required
 - `src/app/` structure is also supported (auto-detected)
 - `basePath` is automatically reflected if configured

@@ -15,7 +15,7 @@ Examples:
 
 ## Overview
 
-frourio-vinext auto-generates `setupMswHandlers.ts` which imports all `route.ts` files and creates MSW handlers that call the **actual route implementations**. Tests use the type-safe client (`$fc`/`fc`) against these handlers, making them integration tests that exercise real server logic without a running Next.js server.
+frourio-vinext auto-generates `setupMswHandlers.ts` which imports all `route.ts` files and creates MSW handlers that call the **actual route implementations**. Tests use the type-safe client (`$fc`/`fc`) against these handlers, making them integration tests that exercise real server logic without a running Vinext server.
 
 ## Prerequisites
 
@@ -342,7 +342,7 @@ The auto-generated `setupMswHandlers.ts`:
 
 1. Imports all `route.ts` files in your app directory
 2. Creates MSW `http.*` handlers that map URL patterns to the actual route exports (`GET`, `POST`, etc.)
-3. Handles path parameters by converting Next.js dynamic segments (`[id]`, `[...slug]`) to MSW URL patterns (`:id`, `*`)
+3. Handles path parameters by converting Vinext dynamic segments (`[id]`, `[...slug]`) to MSW URL patterns (`:id`, `*`)
 4. Passes parsed path parameters as `{ params: Promise.resolve({ ... }) }` to the route handler
 5. Applies `patchDuplicateCookie` to normalize cookie headers
 

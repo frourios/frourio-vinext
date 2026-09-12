@@ -1,6 +1,6 @@
 # add-endpoint
 
-Skill to add a frourio-vinext API endpoint at a user-specified Next.js App Router path.
+Skill to add a frourio-vinext API endpoint at a user-specified Vinext App Router path.
 
 ## Usage
 

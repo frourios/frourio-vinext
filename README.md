@@ -12,11 +12,11 @@
   </a>
 </div>
 <br />
-<p align="center"><strong>Type-safe Next.js App Router Route Handlers with Zod validation and an auto-generated type-safe HTTP client.</strong></p>
+<p align="center"><strong>Type-safe Vinext App Router Route Handlers with Zod validation and an auto-generated type-safe HTTP client.</strong></p>
 <br />
 <br />
 
-FrourioVinext streamlines API development in Next.js App Router by providing:
+FrourioVinext streamlines API development in Vinext App Router by providing:
 
 - **End-to-End Type Safety**: Define your API shape once using Zod schemas in `frourio.ts` and get type safety across your server handlers and client calls.
 - **Runtime Validation**: Automatically validate incoming request parameters, query strings, headers, and bodies against your Zod schemas within Route Handlers.
@@ -152,7 +152,7 @@ yarn dev
 pnpm dev
 ```
 
-Running `dev` starts both the Next.js server and the `frourio-vinext --watch` process. FrourioVinext will automatically detect changes in `frourio.ts` files and generate/update:
+Running `dev` starts both the Vinext server and the `frourio-vinext --watch` process. FrourioVinext will automatically detect changes in `frourio.ts` files and generate/update:
 
 - `app/api/tasks/[taskId]/frourio.server.ts`: Contains the `createRoute` helper function tailored for this specific route.
 - `app/api/tasks/[taskId]/frourio.client.ts`: Contains the type-safe client functions (`fc`, `$fc`) for this route and its children.
@@ -219,7 +219,7 @@ export const { GET, PATCH, DELETE } = createRoute({
 
 // How createRoute works:
 // 1. It receives your controller implementation.
-// 2. For each method (GET, POST, etc.), it generates a Next.js Route Handler.
+// 2. For each method (GET, POST, etc.), it generates a Vinext Route Handler.
 // 3. Inside the handler, it parses and validates the incoming NextRequest (params, query, headers, body) using the schemas from frourio.ts.
 // 4. If validation fails, it returns an appropriate error response (e.g., 400, 422).
 // 5. If validation succeeds, it calls your controller function with the typed, validated request data.
@@ -1005,7 +1005,7 @@ patchFilePrototype();
 
 ## Testing
 
-Test your FrourioVinext handlers like standard Next.js Route Handlers, typically by mocking `NextRequest` and calling the exported handler functions directly. Use libraries like `msw` to mock the `fetch` calls when testing client-side logic or components using the generated Frourio clients (`fc`, `$fc`).
+Test your FrourioVinext handlers like standard Vinext Route Handlers, typically by mocking `NextRequest` and calling the exported handler functions directly. Use libraries like `msw` to mock the `fetch` calls when testing client-side logic or components using the generated Frourio clients (`fc`, `$fc`).
 
 See `tests/client.spec.ts`, `tests/useSWR.spec.tsx`, and `tests/useQuery.spec.tsx` for detailed examples using `msw` and `vitest`.
 
