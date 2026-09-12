@@ -1,10 +1,11 @@
 {
   "name": "@frourio/vinext",
   "version": "0.0.0",
-  "type": "module",
   "description": "Vinext Route Handlers helper with runtime validation and type-safe clients",
   "author": "Solufa",
   "license": "MIT",
+  "type": "module",
+  "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "bin": {
     "frourio-vinext": "bin/index.js",
@@ -53,8 +54,8 @@
     "@vitest/coverage-v8": "^4.1.2",
     "ai": "^6.0.116",
     "cookie": "^1.1.1",
-    "happy-dom": "^20.8.4",
-    "msw": "^2.12.13",
+    "happy-dom": "^20.14.5",
+    "msw": "^2.15.0",
     "oxfmt": "^0.36.0",
     "oxlint": "^1.51.0",
     "swr": "^2.4.1",
